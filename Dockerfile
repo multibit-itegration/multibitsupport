@@ -1,16 +1,33 @@
-# Простой образ на базе Nginx: ожидается, что сборка Angular
-# уже находится в каталоге browser/ в контексте сборки.
+# Этап 1: Сборка приложения Angular
+FROM node:18-alpine as build
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем package.json и package-lock.json (или yarn.lock)
+COPY package*.json ./
+
+# Устанавливаем зависимости
+RUN npm install
+
+# Копируем остальные файлы проекта
+COPY . .
+
+# Собираем приложение для продакшена
+# outputPath в angular.json должен быть "dist/multisupport"
+RUN npm run build
+
+# Этап 2: Настройка и запуск Nginx
 FROM nginx:alpine
 
-# Копируем собранное приложение (относительный путь от build context)
-# Важно: использовать ./browser или browser/ (не абсолютный путь)
-COPY ./dist/multisupport/ /usr/share/nginx/html/
+# Копируем собранное приложение из этапа 'build'
+COPY --from=build /app/dist/task-rating-frontend/ /usr/share/nginx/html
 
-# Копируем наш nginx.conf (при желании можно использовать conf.d)
-COPY nginx.conf /etc/nginx/nginx.conf
+# Копируем кастомную конфигурацию Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Открываем порт 80
 EXPOSE 80
 
-# Запускаем Nginx в foreground
+# Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
