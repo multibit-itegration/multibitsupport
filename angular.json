@@ -28,7 +28,19 @@
             "production": {
               "optimization": true,
               "outputHashing": "all",
-              "baseHref": "/"
+              "baseHref": "/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
+                },
+                {
+                  "type": "any",
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
+                }
+              ]
             },
             "development": {
               "optimization": false,
