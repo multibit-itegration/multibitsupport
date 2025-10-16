@@ -3,15 +3,15 @@
   "version": 1,
   "projects": {
     "task-rating-frontend": {
+      "projectType": "application",
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/multisupport",
+            "outputPath": "dist/task-rating-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -22,13 +22,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "baseHref": "/multisupport/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
               "optimization": true,
               "outputHashing": "all",
-              "baseHref": "/multisupport/"
+              "baseHref": "/"
             },
             "development": {
               "optimization": false,
