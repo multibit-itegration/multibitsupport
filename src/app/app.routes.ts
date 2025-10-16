@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/rating', pathMatch: 'full' },
+  // { path: '', redirectTo: '/rating', pathMatch: 'full' },
   {
-    path: 'rating',
+    path: '',
     loadComponent: () => import('./components/task-rating.component').then(m => m.TaskRatingComponent),
   },
-  { path: '**', redirectTo: '/rating' },
+  // { path: '**', redirectTo: '/rating' },
 ];
 
