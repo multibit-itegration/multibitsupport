@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/angular-cli",
   "version": 1,
   "projects": {
-    "task-rating-frontend": {
+    "multisupport": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/task-rating-frontend",
+            "outputPath": "dist/multisupport",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -32,13 +32,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2kb",
-                  "maximumError": "5kb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
-                  "type": "any",
+                  "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "5kb"
+                  "maximumError": "4kb"
                 }
               ]
             },
@@ -56,10 +56,10 @@
           },
           "configurations": {
             "development": {
-              "buildTarget": "task-rating-frontend:build:development"
+              "buildTarget": "multisupport:build:development"
             },
             "production": {
-              "buildTarget": "task-rating-frontend:build:production"
+              "buildTarget": "multisupport:build:production"
             }
           },
           "defaultConfiguration": "development"
