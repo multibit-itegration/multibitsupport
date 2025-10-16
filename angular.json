@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/angular-cli",
   "version": 1,
   "projects": {
-    "multisupport": {
+  "task-rating-frontend": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -10,8 +10,8 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
-            "outputPath": "dist/multisupport",
+            "options": {
+            "outputPath": "dist/task-rating-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -24,23 +24,12 @@
             ],
             "baseHref": "/"
           },
-          "configurations": {
+            "configurations": {
             "production": {
               "optimization": true,
               "outputHashing": "all",
               "baseHref": "/",
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ]
+              "budgets": []
             },
             "development": {
               "optimization": false,
@@ -54,12 +43,12 @@
           "options": {
             "port": 4200
           },
-          "configurations": {
+            "configurations": {
             "development": {
-              "buildTarget": "multisupport:build:development"
+              "buildTarget": "task-rating-frontend:build:development"
             },
             "production": {
-              "buildTarget": "multisupport:build:production"
+              "buildTarget": "task-rating-frontend:build:production"
             }
           },
           "defaultConfiguration": "development"
