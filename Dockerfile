@@ -1,14 +1,16 @@
-# Этап 2: Запуск через Nginx
-FROM nginx:alpine AS build
+# Простой образ на базе Nginx: ожидается, что сборка Angular
+# уже находится в каталоге browser/ в контексте сборки.
+FROM nginx:alpine
 
-# Копируем собранное приложение в Nginx
-COPY  /browser /usr/share/nginx/html
+# Копируем собранное приложение (относительный путь от build context)
+# Важно: использовать ./browser или browser/ (не абсолютный путь)
+COPY ./dist/multisupport/ /usr/share/nginx/html/
 
-# Копируем файл конфигурации Nginx
+# Копируем наш nginx.conf (при желании можно использовать conf.d)
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Открываем порт 80
 EXPOSE 80
 
-# Запускаем Nginx
+# Запускаем Nginx в foreground
 CMD ["nginx", "-g", "daemon off;"]
