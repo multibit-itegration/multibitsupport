@@ -13,7 +13,7 @@
             "options": {
             "outputPath": "dist/task-rating-frontend",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
