@@ -8,7 +8,7 @@
   "watch": "ng build --watch --configuration development",
   "test": "ng test",
   "start:static": "npx --yes serve -s dist/task-rating-frontend -l 4200",
-  "postbuild": "sh -c 'if [ -d dist/task-rating-frontend/browser ]; then cp -R dist/task-rating-frontend/browser/* dist/task-rating-frontend/ || true; fi'"
+  "postbuild": "sh -c 'if [ -d dist/task-rating-frontend ]; then rm -rf dist/task-rating-frontend/browser || true; mkdir -p dist/task-rating-frontend/browser && cp -R dist/task-rating-frontend/* dist/task-rating-frontend/browser/ || true; fi'"
   },
   "prettier": {
     "printWidth": 100,
