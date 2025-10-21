@@ -8,7 +8,7 @@
   "watch": "ng build --watch --configuration development",
   "test": "ng test",
   "start:static": "npx --yes serve -s dist/task-rating-frontend -l 4200",
-  "postbuild": "sh -c 'if [ -d dist/task-rating-frontend ]; then rm -rf dist/task-rating-frontend/browser || true; mkdir -p dist/task-rating-frontend/browser && (cd dist/task-rating-frontend && find . -maxdepth 1 -mindepth 1 ! -name browser -print0 | xargs -0 -I{} cp -R {} browser/ || true); fi'"
+  "postbuild": "sh -c 'if [ -d dist/task-rating-frontend ]; then mkdir -p dist/task-rating-frontend/browser || true; if [ -f dist/task-rating-frontend/index.html ]; then (cd dist/task-rating-frontend && find . -maxdepth 1 -mindepth 1 ! -name browser -print0 | xargs -0 -I{} cp -R {} browser/ || true); fi; if [ ! -f dist/task-rating-frontend/browser/index.html ]; then f=$(find dist/task-rating-frontend -type f -name index.html -print -quit) && [ -n \"$f\" ] && cp \"$f\" dist/task-rating-frontend/browser/index.html || true; fi; fi'"
   },
   "prettier": {
     "printWidth": 100,
