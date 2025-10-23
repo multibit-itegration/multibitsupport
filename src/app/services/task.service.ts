@@ -16,9 +16,9 @@ export interface ExtendedRatingPayload {
 export class TaskService {
   constructor(private http: HttpClient) {}
 
-  apiUrl = 'http://217.198.6.143:8000/task/rate/';
-  submitUrl = 'http://217.198.6.143:8000/task/datatag/';
-  usersUrl = 'http://217.198.6.143:8000/user/list/';
+  apiUrl = 'https://fb.multi-support.ru/task/rate/';
+  submitUrl = 'https://fb.multi-support.ru/task/datatag/';
+  usersUrl = 'https://fb.multi-support.ru/user/list/';
   useMockData = false;
 
   fieldIds = {
