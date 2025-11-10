@@ -16,9 +16,9 @@ export interface ExtendedRatingPayload {
 export class TaskService {
   constructor(private http: HttpClient) {}
 
-  apiUrl = 'http://217.198.6.143:8000/task/rate/';
-  submitUrl = 'http://217.198.6.143:8000/task/datatag/';
-  usersUrl = 'http://217.198.6.143:8000/user/list/';
+  apiUrl = 'https://217.198.6.143:8000/task/rate/';
+  submitUrl = 'https://217.198.6.143:8000/task/datatag/';
+  usersUrl = 'https://217.198.6.143:8000/user/list/';
   useMockData = false;
 
   fieldIds = {
