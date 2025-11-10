@@ -5,11 +5,12 @@ import { TaskService } from '../services/task.service';
 import { RatingFormComponent } from './rating-form.component';
 import { ThankYouComponent } from './thank-you.component';
 import { TimeoutComponent } from './timeout.component';
+import { SubmissionCompleteComponent } from './submission-complete.component';
 
 @Component({
   selector: 'app-task-rating',
   standalone: true,
-  imports: [CommonModule, RatingFormComponent, ThankYouComponent, TimeoutComponent],
+  imports: [CommonModule, RatingFormComponent, ThankYouComponent, TimeoutComponent, SubmissionCompleteComponent],
   template: `
     <div class="container">
       <div class="header"><div class="logo">multisupport</div></div>
@@ -21,6 +22,7 @@ import { TimeoutComponent } from './timeout.component';
 
       <app-rating-form *ngIf="viewState === 'rating-form'" [taskId]="taskId" [preSelectedRating]="preSelectedRating" (ratingSubmitted)="onRatingSubmitted()"></app-rating-form>
       <app-thank-you *ngIf="viewState === 'thank-you'"></app-thank-you>
+      <app-submission-complete *ngIf="viewState === 'submission-complete'"></app-submission-complete>
       <app-timeout *ngIf="viewState === 'timeout'"></app-timeout>
 
       <div *ngIf="viewState === 'error'" class="error">
@@ -58,7 +60,7 @@ import { TimeoutComponent } from './timeout.component';
 export class TaskRatingComponent implements OnInit {
   taskId = '';
   preSelectedRating: number | null = null;
-  viewState: 'loading' | 'rating-form' | 'thank-you' | 'timeout' | 'error' = 'loading';
+  viewState: 'loading' | 'rating-form' | 'thank-you' | 'submission-complete' | 'timeout' | 'error' = 'loading';
   errorMessage = '';
 
   constructor(private route: ActivatedRoute, private taskService: TaskService) {}
@@ -103,7 +105,7 @@ export class TaskRatingComponent implements OnInit {
     });
   }
 
-  onRatingSubmitted(): void { this.viewState = 'thank-you'; }
+  onRatingSubmitted(): void { this.viewState = 'submission-complete'; }
   retry(): void { this.viewState = 'loading'; this.errorMessage = ''; this.checkTaskStatus(); }
 }
 

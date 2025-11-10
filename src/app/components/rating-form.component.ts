@@ -29,8 +29,9 @@ import { TaskService, ExtendedRatingPayload } from '../services/task.service';
       </div>
 
       <button class="cta-hint" type="button" (click)="toggleExtendedForm()">
-        <span *ngIf="showExtendedForm" class="close-extended" (click)="$event.stopPropagation(); showExtendedForm=false">✕</span>
-        «Помогите нам стать лучше — заполните расширенную форму оценки»
+        <span class="arrow-indicator" [class.rotated]="showExtendedForm">▼</span>
+        <span>«Помогите нам стать лучше — заполните расширенную форму оценки»</span>
+        <span class="arrow-indicator" [class.rotated]="showExtendedForm">▼</span>
       </button>
 
       <div *ngIf="showExtendedForm" class="extended-form">
@@ -108,6 +109,8 @@ import { TaskService, ExtendedRatingPayload } from '../services/task.service';
     .rating-buttons button:disabled{opacity:.6;cursor:not-allowed}
     .rating-caption{color:#fff;opacity:.9;font-size:14px;white-space:nowrap;margin-left:8px;margin-right:0;align-self:center;margin-top:0}
     .cta-hint{border:2px dashed #6635F3;color:#000;padding:18px;border-radius:10px;margin:8px 0 18px;text-align:center;background:transparent;width:100%;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}
+    .arrow-indicator{font-size:18px;color:#6635f3;margin:0 12px;transition:transform .3s ease}
+    .arrow-indicator.rotated{transform:rotate(180deg)}
     .close-extended{position:absolute;right:24px;font-size:28px;color:#6635f3;cursor:pointer;user-select:none;transition:color .2s;z-index:2}
     .close-extended:hover{color:#3b82f6}
     .extended-form{background:#6635f3;border:2px solid #3B82F6;border-radius:12px;padding:32px 28px;color:#fff;font-size:17px}
@@ -245,6 +248,7 @@ export class RatingFormComponent implements OnInit {
           ...this.extendedRating,
           praiseUserId: this.selectedPraiseUserId ?? this.extendedRating.praiseUserId ?? null,
           praise: this.praiseQuery || this.extendedRating.praise || '',
+          improvements: this.extendedRating.improvements || '',
         }
       : null;
 

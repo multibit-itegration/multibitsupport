@@ -44,7 +44,6 @@ export class TaskService {
     if (this.useMockData) return of({ success: true }).pipe(delay(1000));
 
     const customFieldData: any[] = [
-      { field: { id: this.fieldIds.performer }, value: taskId },
       { field: { id: this.fieldIds.overallRating }, value: rating },
     ];
 
