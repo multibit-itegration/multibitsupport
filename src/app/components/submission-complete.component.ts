@@ -44,7 +44,7 @@ import { CommonModule } from '@angular/common';
 export class SubmissionCompleteComponent {
   downloadPdf(): void {
     const a = document.createElement('a');
-    a.href = '/assets/maintenance-guide.pdf';
+    a.href = '/assets/Без WA.pdf';
     a.download = 'Памятка по обслуживанию.pdf';
     document.body.appendChild(a);
     a.click();
